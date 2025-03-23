@@ -1,14 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.AddRecipeFragment">
+    tools:context=".ui.AddRecipeFragment"
+    android:orientation="vertical">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dodawanie Przepisu"
+        android:textSize="25dp"
+        android:layout_margin="15dp"
+        android:layout_gravity="center"/>
 
-</FrameLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nazwa przepisu:"
+        android:textSize="20sp"
+        android:layout_marginStart="5dp"/>
+    <EditText
+        android:id="@+id/recipe_name"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="5dp"
+        android:hint="Murzynek"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Składniki:"
+        android:textSize="20sp"
+        android:layout_marginStart="5dp"/>
+    <EditText
+        android:id="@+id/recipe_ingredients"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="5dp"
+        android:hint="Mąka, jajka"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Instrukcje:"
+        android:textSize="20sp"
+        android:layout_marginStart="5dp" />
+    <EditText
+        android:id="@+id/recipe_instructions"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="5dp"
+        android:hint="Wymieszać składniki w misce"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ocena przepisu:"
+        android:textSize="20sp"
+        android:layout_marginStart="5dp"/>
+    <RatingBar
+        android:id="@+id/recipe_ratingbar"
+        android:layout_margin="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:numStars="5"
+        android:stepSize="0.5"
+        android:rating="2.5"
+        android:isIndicator="false"
+        android:progressTint="#E0BC00"/>
+
+    <Button
+        android:id="@+id/recipe_save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Zapisz przepis"
+        android:layout_marginStart="5dp"/>
+
+
+
+
+</LinearLayout>
