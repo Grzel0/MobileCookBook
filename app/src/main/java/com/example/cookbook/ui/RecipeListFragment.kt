@@ -15,9 +15,7 @@ import com.example.cookbook.R
 
 class RecipeListFragment : Fragment() {
     private lateinit var listView: ListView
-    private lateinit var adapter: ListAdapter
-    private val items = listOf("Sernik", "Spadżetti", "lazania", "boloneze")
-    private lateinit var btnAdd: Button
+    private lateinit var btn: Button
     private var recipeNames = mutableListOf<String>()
 
     override fun onCreateView(
@@ -30,34 +28,32 @@ class RecipeListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         listView = view.findViewById(R.id.recipe_list_view)
+        btn = view.findViewById(R.id.add_recipe_button)
 
         val sharedPreferences = requireContext().getSharedPreferences("mojeDane", MODE_PRIVATE)
         val recipes = sharedPreferences.getString("recipes", "")
 
-        if (recipes.isNullOrEmpty()){
-            recipeNames.clear()
-        }else{
+        recipeNames.clear()
+        if (!recipes.isNullOrEmpty()){
             val recipeArray = recipes.split(";")
-
-            recipeNames.clear()
-            for (recipe in recipeArray){
+            recipeArray.forEach{recipe ->
                 val recipeData = recipe.split("|")
                 if(recipeData.isNotEmpty()){
-                    recipeNames.add(recipeData[0])
+                    recipeNames.add(recipe)
                 }
             }
         }
 
-        val adapter = ListAdapter(requireContext(), recipeNames)
-        listView.adapter = adapter
+        listView.adapter = ListAdapter(requireContext(), recipeNames)
 
-
-        btnAdd = view.findViewById(R.id.add_recipe_button)
-        btnAdd.setOnClickListener {
+        btn.setOnClickListener {
             parentFragmentManager.beginTransaction()
-                .replace(R.id.fragmentContainer, AddRecipeFragment()).addToBackStack(null).commit()
+                .replace(R.id.fragmentContainer, AddRecipeFragment())
+                .addToBackStack(null)
+                .commit()
         }
     }
+
 
 
 
