@@ -35,7 +35,7 @@ class RecipeListFragment : Fragment() {
         btnAdd = view.findViewById(R.id.add_recipe_button)
         btnAdd.setOnClickListener {
             parentFragmentManager.beginTransaction()
-                .replace(R.id.fragmentContainer, AddRecipeFragment()).commit()
+                .replace(R.id.fragmentContainer, AddRecipeFragment()).addToBackStack(null).commit()
         }
     }
 
