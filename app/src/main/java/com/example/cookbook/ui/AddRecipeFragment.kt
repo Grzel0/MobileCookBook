@@ -68,7 +68,7 @@ class AddRecipeFragment : Fragment() {
                 val updatedRecipes = if (existingRecipes.isNullOrEmpty()){
                     recipeData
                 } else {
-                    "$existingRecipes,$recipeData"
+                    "$existingRecipes;$recipeData"
                 }
 
                 editor.putString("recipes", updatedRecipes).apply()

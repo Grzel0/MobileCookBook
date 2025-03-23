@@ -1,5 +1,6 @@
 package com.example.cookbook.ui
 
+import android.content.Context.MODE_PRIVATE
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -17,6 +18,7 @@ class RecipeListFragment : Fragment() {
     private lateinit var adapter: ListAdapter
     private val items = listOf("Sernik", "Spadżetti", "lazania", "boloneze")
     private lateinit var btnAdd: Button
+    private var recipeNames = mutableListOf<String>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,7 +30,25 @@ class RecipeListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         listView = view.findViewById(R.id.recipe_list_view)
-        adapter = ListAdapter(requireContext(), items)
+
+        val sharedPreferences = requireContext().getSharedPreferences("mojeDane", MODE_PRIVATE)
+        val recipes = sharedPreferences.getString("recipes", "")
+
+        if (recipes.isNullOrEmpty()){
+            recipeNames.clear()
+        }else{
+            val recipeArray = recipes.split(";")
+
+            recipeNames.clear()
+            for (recipe in recipeArray){
+                val recipeData = recipe.split("|")
+                if(recipeData.isNotEmpty()){
+                    recipeNames.add(recipeData[0])
+                }
+            }
+        }
+
+        val adapter = ListAdapter(requireContext(), recipeNames)
         listView.adapter = adapter
 
 
