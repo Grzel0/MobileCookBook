@@ -52,5 +52,12 @@
         android:rating="2.5"
         android:isIndicator="true"
         android:progressTint="#E0BC00"/>
+    <Button
+        android:id="@+id/recipe_list_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Powrót"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="5dp"/>
 
 </LinearLayout>

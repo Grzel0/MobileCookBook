@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.RatingBar
 import android.widget.TextView
 import androidx.fragment.app.Fragment
@@ -38,24 +39,11 @@ class RecipeDetailsFragment : Fragment() {
         recipeInstructionsTextView.text = "Instrukcja: $recipeInstructions"
         recipeRatingRatingBar.rating = recipeRating
 
+        val btnBack: Button = view.findViewById(R.id.recipe_list_back)
+        btnBack.setOnClickListener {
+            parentFragmentManager.popBackStack()
+        }
 
-//        val sharedPreferences = requireContext().getSharedPreferences("mojeDane", MODE_PRIVATE)
-//        val recipesString = sharedPreferences.getString("recipes", "")
-//
-//        if(!recipesString.isNullOrEmpty()){
-//            val recipesList = recipesString.split(";")
-//            val lastRecipe = recipesList.lastOrNull()
-//
-//            lastRecipe?.let {
-//                val recipeParts = it.split("|")
-//                if(recipeParts.size == 4){
-//                    recipeNameTextView.text = recipeParts[0]
-//                    recipeIngredientsTextVie.text = recipeParts[1]
-//                    recipeInstructionsTextView.text = recipeParts[2]
-//                    recipeRatingBar.rating = recipeParts[3].toFloat()
-//                }
-//            }
-//        }
     }
 
 
