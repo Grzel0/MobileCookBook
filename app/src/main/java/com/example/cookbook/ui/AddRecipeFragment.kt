@@ -82,6 +82,11 @@ class AddRecipeFragment : Fragment() {
                 Toast.makeText(requireContext(), "Wszystkie pola muszą być wypełnione", Toast.LENGTH_SHORT).show()
             }
         }
+
+        val btnBack: Button = view.findViewById(R.id.recipe_list_back)
+        btnBack.setOnClickListener {
+            parentFragmentManager.popBackStack()
+        }
     }
 
 
